@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quence Playground</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script type="module" src="./index.js"></script>
 </head>
-
 <body>
-  <h1>See <a href="https://github.com/hildjj/quence">Quence</a> in Action!</h1>
-  <div class="horiz">
-    <div id="src"></div>
-    <div>
-      <a id="downloadWSD" download="sequence.wsd">Download WSD</a>
-      <a id="downloadSVG" download="sequnce.svg">Download SVG</a>
-      <a id="downloadPDF" href="#sequence.pdf">Download PDF</a>
-      <a id="downloadPDFhidden" download="sequence.pdf">Hidden PDF download link</a>
-      <div id="dest"></div>
-    </div>
+  <div id="app">
+    <header>
+      <h1><a href="https://github.com/hildjj/quence">Quence</a> Playground</h1>
+      <div class="controls">
+        <label for="examples">Examples:</label>
+        <select id="examples"></select>
+        <a id="dl-wsd" download="sequence.wsd">Download WSD</a>
+        <a id="dl-svg" download="sequence.svg">Download SVG</a>
+      </div>
+    </header>
+    <main>
+      <div id="editor-pane"></div>
+      <div id="preview-pane">
+        <div id="tab-bar">
+          <button id="tab-svg" class="active">SVG</button>
+          <button id="tab-canvas">Canvas</button>
+        </div>
+        <div id="svg-preview"></div>
+        <div id="canvas-wrap" hidden><canvas id="canvas-preview"></canvas></div>
+        <div id="error-display" hidden></div>
+      </div>
+    </main>
   </div>
+  <script type="module" src="src/main.js"></script>
 </body>
-
 </html>

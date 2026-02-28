@@ -2,7 +2,6 @@ import * as quence from '../lib/index.js';
 import Store from './store.js';
 import fs from 'fs';
 import test from 'ava';
-import url from 'url';
 
 const EXAMPLES = new URL('../examples/', import.meta.url);
 
@@ -32,22 +31,6 @@ test('svg', async t => {
   }
 });
 
-test('pdf', async t => {
-  const cwd = process.cwd();
-  process.chdir(url.fileURLToPath(EXAMPLES));
-  const dir = await fs.promises.readdir(EXAMPLES);
-  for (const f of dir) {
-    if (f.endsWith('.wsd')) {
-      const fn = new URL(f, EXAMPLES);
-      const buf = await fs.promises.readFile(fn, 'utf-8');
-      const output = quence.draw(buf, 'pdf', new Store());
-      const o = await output.readFull();
-      t.assert(o.length > 0);
-      t.is(o.toString('utf8', 0, 5), '%PDF-');
-    }
-  }
-  process.chdir(cwd);
-});
 
 test('json', async t => {
   const dir = await fs.promises.readdir(EXAMPLES);

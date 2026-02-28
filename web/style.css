@@ -1,27 +1,160 @@
-body {
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: sans-serif;
 }
 
-.horiz {
-  width: 100%;
+#app {
   display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #282c34;
+  color: #abb2bf;
+  flex-shrink: 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+header h1 a {
+  color: #61afef;
+  text-decoration: none;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
-#src {
-  width: 50%;
-  height: 30em;
+.controls label {
+  font-size: 0.9rem;
 }
 
-a {
-  margin-left: 10px;
+#examples {
+  font-size: 0.9rem;
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: 1px solid #4b5263;
+  background: #3e4451;
+  color: #abb2bf;
 }
 
-#downloadPDFhidden {
+#dl-wsd, #dl-svg {
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: #3e4451;
+  color: #61afef;
+  text-decoration: none;
+  border: 1px solid #4b5263;
+}
+
+#dl-wsd:hover, #dl-svg:hover {
+  background: #4b5263;
+}
+
+main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+#editor-pane {
+  flex: 1;
+  overflow: hidden;
+  border-right: 1px solid #4b5263;
+}
+
+#editor-pane .cm-editor {
+  height: 100%;
+}
+
+#preview-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+}
+
+#tab-bar {
+  display: flex;
+  gap: 4px;
+  padding: 6px 8px;
+  background: #282c34;
+  flex-shrink: 0;
+}
+
+#tab-bar button {
+  padding: 4px 14px;
+  border: 1px solid #4b5263;
+  border-radius: 4px;
+  background: #3e4451;
+  color: #abb2bf;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+#tab-bar button.active {
+  background: #61afef;
+  color: #282c34;
+  border-color: #61afef;
+}
+
+#svg-preview {
+  flex: 1;
+  overflow: auto;
+  padding: 8px;
+}
+
+#svg-preview svg {
+  max-width: 100%;
+  height: auto;
+}
+
+#canvas-wrap {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 8px;
+}
+
+#canvas-wrap[hidden] {
   display: none;
 }
 
-#dest {
-  margin-left: 10px;
-  margin-top: 10px;
+#canvas-preview {
+  display: block;
+}
+
+#error-display {
+  flex: 1;
+  padding: 16px;
+  color: #e06c75;
+  font-family: monospace;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  overflow: auto;
+}
+
+#error-display[hidden] {
+  display: none;
 }
